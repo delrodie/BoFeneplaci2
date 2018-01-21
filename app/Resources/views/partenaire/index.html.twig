@@ -1,0 +1,95 @@
+{% extends 'backoffice.html.twig' %}
+
+{% block title %}Liste des partenaires{% endblock %}
+
+{% block body %}
+<div class="pageheader">
+  <h3><i class="fa fa-home"></i>  Rubriques</h3>
+  <div class="breadcrumb-wrapper">
+    <span class="label"></span>
+    <ol class="breadcrumb">
+      <li><a href="#">Accueil</a></li>
+      <li class="active">partenaires</li>
+    </ol>
+  </div>
+</div>
+
+<div id="page-content">
+
+  <br>
+    <!-- Message -->
+      {% for flash_message in app.session.flashBag.get('notice') %}
+        {% if flash_message %}
+        <div class="row">
+          <div class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2">
+            <div class="alert alert-info media fade in">
+              <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+              <div class="media-left">
+                <span class="icon-wrap icon-wrap-xs icon-circle alert-icon">
+                  <i class="fa fa-check fa-lg"></i>
+                </span>
+              </div>
+              <div class="media-body">
+                <p></p>
+                  <h4 class="alert-title" style="color: green">
+                    {{ flash_message }}
+                  </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+      <!-- \Message -->
+      <br>
+
+  <div class="row">
+    <div class="col-sm-12 col-sm-offset-0">
+      <div class="panel">
+        <div class="btn-toolbar pad-all">
+          <div class="btn-group text-right">
+            <a href="{{ path('admin_partenaire_new')}}">
+            <button class="btn btn-sm btn-default" type="button">
+              <i class="fa fa-plus"></i> Ajouter un nouveau partenaire
+            </button>
+            </a>
+          </div>
+        </div>
+        <div class="panel-heading">
+          <h3 class="panel-title"></h3>
+        </div>
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th class="text-center">Noms</th>
+                  <th class="text-center">logo</th>
+                  <th class="text-center">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for partenaire in partenaires %}
+                    <tr>
+                      <td>{{ loop.index }}.</td>
+                      <td>{{ partenaire.nom|title }}</td>
+                      <td class="text-center">
+                      <img src="{{ vich_uploader_asset(partenaire, 'imageFile') }}" alt="{{ partenaire.nom }}" class="img-thumbnail img-page" width="100px" />
+                      </td>
+                      <td class="text-center">
+                        <a href="{{ path('admin_partenaire_edit', {'slug': partenaire.slug})}}" title="Modifier la rubrique"><i class="fa fa-edit"></i></a>
+                      </td>
+                    </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}
