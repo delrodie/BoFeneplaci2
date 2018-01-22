@@ -1,0 +1,5 @@
+<ul>
+                                    {% for menu in menus %}
+                                    <li><a href="{{ path('documentation', {'slug': menu.slug })}}">{{ menu.libelle|upper }}</a></li>
+                                    {% endfor %}                                    
+                                </ul>  

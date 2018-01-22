@@ -1,13 +1,155 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+
+<head>
+<meta charset="utf-8"> 
+<title>{% block title %}FENEPLACI{% endblock %}</title>
+
+<link href="{{ asset('ressources/css/bootstrap.css')}}" rel="stylesheet">
+<link href="{{ asset('ressources/css/responsive.css')}}" rel="stylesheet">
+<link href="{{ asset('ressources/css/style.css')}}" rel="stylesheet">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="shortcut icon" href="{{ asset('ressources/images/favicon.ico')}}" type="image/x-icon">
+<link rel="icon" href="{{ asset('ressources/images/logo.png')}}" type="image/x-icon">
+</head>
+
+<body>
+    
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.4";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="page-wrapper"> 	
+
+    <!--Header Upper-->
+    <section class="header-upper">
+        <div class="container clearfix">
+            <div class="logo">
+                <figure>
+                    <a href="#"><img src="images/logo.png" alt=""></a>
+                </figure>
+            </div>
+            <ul class="header-info">
+                <li class="item">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <h6>Email :</h6>
+                    <a href="#"><span>contact@feneplaci.ci</span></a>
+                </li>
+                <li class="item">
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    <h6>Telephone</h6>
+                    <span>+225 22 41 49 96 / 08 05 65 65</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+
+    <header class="main-header sticky-header">
+        <div class="container">
+            <div class="header-area clearfix">                
+                <nav class="main-menu">
+                    <div class="navbar-header">
+                        <!-- Toggle Button -->      
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>           
+                    <div class="navbar-collapse collapse clearfix">
+                        <ul class="navigation clearfix">
+                            <li class="current"><a href="{{ path('homepage') }}">Accueil</a></li>
+                            <li><a href="{{ path('nos_actualites') }}">Actualités</a></li>
+                            <li><a href="{{ path('presentation')}}">Qui sommes-nous?</a></li>
+                            <li><a href="{{ path('objectif') }}">Objectifs</a></li>
+                            <li class="dropdown"><a href="#">Documentation</a>
+                                {{ render(url('menu_documentation'))}}                              
+                            </li>
+                            <li><a href="#">Annuaire</a></li>                 
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>                    
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!--End Main Header -->
+    
+
+    {% block body %}{% endblock %}   
+
+
+    <!--Sponsor Logo-->
+    <section class="sponsor-logo">
+        <div class="container">
+            <div class="sponsor-slider">
+                {{ render(url('partenaire'))}}               
+            </div>
+        </div>
+    </section>
+    <!--End Sponsor Logo-->
+
+
+    <!--main-footer-->
+    <footer class="main-footer" style="">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="copyright-text text-center">
+                    <p><a href="#">FENEPLACI</a> &copy; Tous droits reservés</p>
+                </div>
+            </div>
+        </div>    
+    </footer>
+    <!--End main-footer-->
+
+
+</div>
+<!--End pagewrapper-->
+
+
+
+
+
+<!--Scroll to top-->
+<div class="scroll-to-top scroll-to-target" data-target=".header-top"><span class="icon fa fa-angle-up"></span></div>
+
+<script src="{{ asset('ressources/js/jquery.js')}}"></script>
+<script src="{{ asset('ressources/js/bootstrap.min.js')}}"></script>
+<script src="{{ asset('ressources/js/isotope.js')}}"></script>
+<script src="{{ asset('ressources/js/jquery.fancybox.pack.js')}}"></script>
+<script src="{{ asset('ressources/js/jquery.fancybox-media.js')}}"></script>
+<script src="{{ asset('ressources/js/html5lightbox.js')}}"></script>
+<!-- circle progress -->
+<script src="{{ asset('ressources/js/circle-progress.js')}}"></script>
+
+<!-- revolution slider js -->
+<script src="{{ asset('ressources/assets/revolution/js/jquery.themepunch.tools.min.js')}}"></script>
+<script src="{{ asset('ressources/assets/revolution/js/jquery.themepunch.revolution.min.js')}}"></script>
+<script src="{{ asset('ressources/assets/revolution/js/extensions/revolution.extension.actions.min.js')}}"></script>
+<script src="{{ asset('ressources/assets/revolution/js/extensions/revolution.extension.carousel.min.js')}}"></script>
+<script src="{{ asset('ressources/assets/revolution/js/extensions/revolution.extension.kenburn.min.js')}}"></script>
+<script src="{{ asset('ressources/assets/revolution/js/extensions/revolution.extension.layeranimation.min.js')}}"></script>
+<script src="{{ asset('ressources/assets/revolution/js/extensions/revolution.extension.migration.min.js')}}"></script>
+<script src="{{ asset('ressources/assets/revolution/js/extensions/revolution.extension.navigation.min.js')}}"></script>
+<script src="{{ asset('ressources/assets/revolution/js/extensions/revolution.extension.parallax.min.js')}}"></script>
+<script src="{{ asset('ressources/assets/revolution/js/extensions/revolution.extension.slideanims.min.js')}}"></script>
+<script src="{{ asset('ressources/assets/revolution/js/extensions/revolution.extension.video.min.js')}}"></script>
+
+<script src="{{ asset('ressources/js/owl.carousel.min.js')}}"></script>
+<script src="{{ asset('ressources/js/validate.js')}}"></script>
+<script src="{{ asset('ressources/js/wow.js')}}"></script>
+<script src="{{ asset('ressources/js/jquery.appear.js')}}"></script>
+<script src="{{ asset('ressources/js/jquery.countTo.js')}}"></script>
+
+<script src="{{ asset('ressources/js/script.js')}}"></script>
+</body>
+
 </html>

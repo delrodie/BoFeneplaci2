@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des documents de {{ departement|upper }}{% endblock %}
+
+{% block body %}
+
+    <!--Page Title-->
+    <section class="page-title" style="background-image:url(asset('ressources/images/bg.jpg'));">
+        <div class="container">
+            <div class="title-text clearfix">
+                <h3>{{ ariane }}</h3>
+            </div>           
+        </div>
+    </section>
+    <!--End Page Title-->
+
+
+     <section class="our-events style-two">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-12 col-xs-12">
+                    {% for document in documents %}
+                     <div class="item-holder">
+                        <div class="image-box">
+                            <figure>
+                                <img src="{{ asset('ressources/images/logo.png')}}" alt="">
+                            </figure>
+                        </div>
+                        <div class="content-text">
+                            <h3>{{ document.departement|upper }}{{ document.titre }}</h3>
+                            {{ document.description }}
+                            <div class="link-btn">
+                                <a href="#">Telecharger <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                            </div> 
+                        </div>                                          
+                    </div>   
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+

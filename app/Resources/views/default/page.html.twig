@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ page.titre }}{% endblock %}
+
+{% block body %}
+
+    <!--Page Title-->
+    <section class="page-title" style="background-image:url(images/bg.jpg);">
+        <div class="container">
+            <div class="title-text clearfix">
+                <h3>{{ ariane }}</h3>
+            </div>           
+        </div>
+    </section>
+    <!--End Page Title-->
+
+
+    <!--Single Blog-->
+    <section class="blog-section style-two">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-12 col-xs-12">
+                    <div class="item-holder">
+                        <div class="image-box">
+                            <figure>
+                                <a href="single-blog.html"><img src="{{ vich_uploader_asset(page, 'imageFile') }}" alt="{{ page.titre }}"></a>
+                            </figure>
+                        </div>
+                        <div class="content-text">
+                            <div class="sec-title">
+                                <a href="single-blog.html"><h3>{{ page.titre }}</h3></a>
+                            </div>
+                            <div class="text">
+                                {{ page.contenu|raw }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                    <div class="right-side">
+                        
+                        <div class="gallery-width">
+                            <h4>Facebook</h4>
+                            <div class="clearfix">
+                                <div class="facebook">
+
+                                    <div class="fb-page" data-href="https://www.facebook.com/CIME-339008043210532/" data-height="800" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true">
+                                        <div class="fb-xfbml-parse-ignore">
+                                            <blockquote cite="https://www.facebook.com/CIME-339008043210532/">
+                                                <a href="https://www.facebook.com/CIME-339008043210532/">FENEPLACI</a>
+                                            </blockquote>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+            </div>                    
+        </div>
+    </section>
+    <!--End Single Blog-->
+{% endblock %}
+

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des actualités de FENEPLACI{% endblock %}
+
+{% block body %}
+
+    <!--Page Title-->
+    <section class="page-title" style="background-image:url(images/bg.jpg);">
+        <div class="container">
+            <div class="title-text clearfix">
+                <h3>{{ ariane }}</h3>
+            </div>           
+        </div>
+    </section>
+    <!--End Page Title-->
+
+
+    <section class="blog-section">
+        <div class="container">
+            <div class="row">
+                {% for actualite in actualites %}
+                 <div class="col-md-4 col-sm-12 col-xs-12">
+                    <div class="item-holder">
+                        <div class="image-box">
+                            <figure>
+                                <a href="{{ path('actualite_detail', {'slug': actualite.slug })}}"><img src="{{ vich_uploader_asset(actualite, 'imageFile') }}" alt="{{ actualite.titre }}"></a>
+                            </figure>
+                        </div>
+                        <div class="content-text">
+                            <div class="sec-title">
+                                <a href="{{ path('actualite_detail', {'slug': actualite.slug })}}"><h5>{{ actualite.titre }}</h5></a>
+                            </div>
+                            <div class="text">
+                                {{ actualite.resume|raw }}
+                            </div>
+                            <div class="link-btn">
+                                <a href="{{ path('actualite_detail', {'slug': actualite.slug })}}" class="btn-style-one">lire </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+

@@ -10,4 +10,28 @@ namespace AppBundle\Repository;
  */
 class DocumentationRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Liste des documents selon le departement
+     * 
+     * @author: Delrodie AMOIKON
+     * @date: 22/01/2018 09:40
+     */
+    public function findDocumentionByDepartementSlug($slug)
+    {
+        $em = $this->getEntityManager();
+        return $qb = $em->createQuery('
+                        SELECT d, t
+                        FROM AppBundle:Documentation d
+                        LEFT JOIN d.departement t
+                        WHERE t.slug = :slug
+                        AND d.statut = :actif
+                        ORDER BY d.id DESC
+                    ')
+                    ->setParameters(array(
+                        'slug'  => $slug,
+                        'actif' => 1
+                    ))
+                    ->getResult();
+                    ;
+    }
 }
