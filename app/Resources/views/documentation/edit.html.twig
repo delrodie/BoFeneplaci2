@@ -13,12 +13,12 @@
 
 {% block body %}
 <div class="pageheader">
-  <h3><i class="fa fa-home"></i>  Gestion des sliders</h3>
+  <h3><i class="fa fa-home"></i>  Gestion des Documents</h3>
   <div class="breadcrumb-wrapper">
     <span class="label"></span>
     <ol class="breadcrumb">
       <li><a href="#">Accueil</a></li>
-      <li class="active">Slider</li>
+      <li class="active">Documents</li>
     </ol>
   </div>
 </div>
@@ -64,9 +64,18 @@
                     <div class="row">
                       <div class="col-xs-10 col-xs-offset-1">
                         <div class="form-group">
-                          <label class="control-label">Legende</label>
-                          {{ form_widget(edit_form.legende) }}
-                          {{ form_errors(edit_form.legende) }}
+                          <label class="control-label">Titre</label>
+                          {{ form_widget(edit_form.titre) }}
+                          {{ form_errors(edit_form.titre) }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-10 col-xs-offset-1">
+                        <div class="form-group">
+                          <label class="control-label">Departement</label>
+                          {{ form_widget(edit_form.departement) }}
+                          {{ form_errors(edit_form.departement) }}
                         </div>
                       </div>
                     </div>
@@ -101,7 +110,7 @@
                   <div class="panel-footer">
                     <div class="row">
                       <div class="col-sm-7 col-sm-offset-3 text-right">
-                        <a href="{{ path('admin_slider_index')}} class="btn btn-default">Annuler</a>
+                        <a href="{{ path('admin_documentation_index')}} class="btn btn-default">Annuler</a>
                         <button class="btn btn-primary" type="submit">Modifier</button>
                       </div>
                     </div>
